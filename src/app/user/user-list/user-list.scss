@@ -1,0 +1,53 @@
+:host {
+    display: block;
+    margin-top: 40px;
+}
+
+.user-list {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.user-card {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 16px;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: 0.25s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .index {
+        font-weight: 700;
+        color: #3b82f6;
+        margin-right: 16px;
+    }
+
+    .infos {
+        flex: 1;
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .email {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<div class="user-form">
+    <h2>Création d'un utilisateur : </h2>
+    <form [formGroup]="userCreationForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nom</mat-label>
+            <input type="text" formControlName="nom" matInput>
+            <mat-hint>Indiquez votre Nom. </mat-hint>
+            @if (userCreationForm.controls['nom'].invalid && (userCreationForm.controls['nom'].touched || userCreationForm.controls['nom'].dirty)) {
+                @if (userCreationForm.controls['nom']?.errors?.['required']) {
+                    <mat-error>Le nom est obligatoire.</mat-error>
+                }
+                @if (userCreationForm.controls['nom']?.errors?.['minlength']) {
+                    <mat-error>Le nom doit avoir au moins 5 caractères.</mat-error>
+                }
+                @if (userCreationForm.controls['nom']?.errors?.['forbiddenName']) {
+                    <mat-error>Le nom doit être différent et ne pas être Esterbet.</mat-error>
+                }
+            }
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Prénom</mat-label>
+            <input type="text" formControlName="prenom" matInput>
+            <mat-hint>Indiquez votre Prénom. </mat-hint>
+            @if (userCreationForm.controls['prenom'].invalid && (userCreationForm.controls['prenom'].touched || userCreationForm.controls['prenom'].dirty)) {
+                @if (userCreationForm.controls['prenom']?.errors?.['required']) {
+                    <mat-error>Le prenom est obligatoire.</mat-error>
+                }
+                @if (userCreationForm.controls['prenom']?.errors?.['minlength']) {
+                    <mat-error>Le prenom doit avoir au moins 5 caractères.</mat-error>
+                }
+            }
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" formControlName="email" matInput>
+            <mat-hint>Indiquez votre Email. </mat-hint>
+            @if (userCreationForm.controls['email'].invalid && (userCreationForm.controls['email'].touched || userCreationForm.controls['email'].dirty)) {
+                @if (userCreationForm.controls['email']?.errors?.['required']) {
+                    <mat-error>L'email est obligatoire.</mat-error>
+                }
+                @if (userCreationForm.controls['email']?.errors?.['email']) {
+                    <mat-error>La saisie ne correspond pas au format email.</mat-error>
+                }
+            }
+        </mat-form-field>        
+    </form>
+
+    <p></p>
+    <button matButton="filled" [disabled]="userCreationForm.controls['nom'].invalid || userCreationForm.controls['prenom'].invalid || userCreationForm.controls['email'].invalid" (click)="createUser()">Valider l'utilisateur</button>
+</div>
+
+<!-- <mat-card class="user-card" (click)="goToHome()"><div class="arrow">→</div></mat-card> -->

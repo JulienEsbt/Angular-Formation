@@ -1,5 +1,9 @@
 <div class="user-form">
-    <h2>Création d'un utilisateur : </h2>
+    @if (isEditMode) {
+        <h2>Modification de l'utilisateur : </h2>
+    } @else {
+        <h2>Création d'un nouvel utilisateur : </h2>
+    }
     <form [formGroup]="userCreationForm">
         <mat-form-field class="example-full-width">
             <mat-label>Nom</mat-label>
@@ -46,7 +50,5 @@
     </form>
 
     <p></p>
-    <button matButton="filled" [disabled]="userCreationForm.controls['nom'].invalid || userCreationForm.controls['prenom'].invalid || userCreationForm.controls['email'].invalid" (click)="createUser()">Valider l'utilisateur</button>
+    <button matButton="filled" [disabled]="userCreationForm.controls['nom'].invalid || userCreationForm.controls['prenom'].invalid || userCreationForm.controls['email'].invalid" (click)="saveUser()">Valider l'utilisateur</button>
 </div>
-
-<!-- <mat-card class="user-card" (click)="goToHome()"><div class="arrow">→</div></mat-card> -->

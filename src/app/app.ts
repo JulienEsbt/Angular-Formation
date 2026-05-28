@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Auth } from './core/services/auth';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSlideToggleModule],
+  imports: [RouterOutlet, MatSlideToggleModule, MatIconModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -13,6 +14,7 @@ export class App {
   protected readonly title = signal('Projet 3 - Formation Angular');
   protected readonly modif = signal('Modification des utilisateurs désactivée');
   private readonly _auth = inject(Auth);
+  private readonly _router = inject(Router);
 
   toggleUsers(checked: boolean): void {
     console.log('Autorisation de modification : ', checked);
@@ -23,5 +25,9 @@ export class App {
       this.modif.set('Modification des utilisateurs désactivée');
       this._auth.setEditionAuthorization(false);
     }
+  }
+
+  protected goToHome(): void {
+    this._router.navigate(['home']);
   }
 }

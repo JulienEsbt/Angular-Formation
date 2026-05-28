@@ -7,7 +7,10 @@
                 <div class="name">{{user.nom}} {{user.prenom}}</div>
                 <div class="email">{{user.email}}</div>
             </div>
-            <mat-card class="user-card" (click)="goToUserId(user.id)" (keydown.enter)="goToUserId(user.id)" tabindex="0"><div class="arrow">→</div></mat-card>
+            @if (isEditionAuthorized()) {
+                <mat-card class="user-card" (click)="goToUserId(user.id)" tabindex="0"><div class="arrow">Modifier</div></mat-card>
+                <mat-card class="user-card" (click)="removeUser(user.id)" tabindex="0"><div class="arrow">Supprimer</div></mat-card>
+            }
         </div>
     }
 </div>

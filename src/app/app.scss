@@ -1,15 +1,25 @@
 :host {
-    display: block;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
-    padding: 40px;
-    font-family: "Inter", sans-serif;
+  display: block;
+  padding: 32px;
 }
 
 h1 {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 40px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.top-actions mat-slide-toggle{
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--mat-sys-primary) 8%, white);
 }

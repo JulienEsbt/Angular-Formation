@@ -1,6 +1,13 @@
 <h1>{{ title() }}</h1>
 
-<p><mat-slide-toggle (change)="toggleUsers($event.checked)">{{ modif() }}</mat-slide-toggle></p>
+<div class="top-actions">
+  <mat-slide-toggle (change)="toggleUsers($event.checked)">
+    {{ modif() }}
+  </mat-slide-toggle>
+
+  <button matMiniFab (click)="goToHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
 
 <router-outlet></router-outlet>
-

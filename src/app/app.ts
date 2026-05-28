@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Auth } from './core/services/auth';
 
 @Component({
@@ -15,7 +15,7 @@ export class App {
   private readonly _auth = inject(Auth);
 
   toggleUsers(checked: boolean): void {
-    console.log('Modification : ', checked);
+    console.log('Autorisation de modification : ', checked);
     if (checked) {
       this.modif.set('Modification des utilisateurs activée');
       this._auth.setEditionAuthorization(true);

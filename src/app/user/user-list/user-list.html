@@ -7,7 +7,7 @@
                 <div class="name">{{user.nom}} {{user.prenom}}</div>
                 <div class="email">{{user.email}}</div>
             </div>
-            <mat-card class="user-card" (click)="goToUserId(user.id)"><div class="arrow">→</div></mat-card>
+            <mat-card class="user-card" (click)="goToUserId(user.id)" (keydown.enter)="goToUserId(user.id)" tabindex="0"><div class="arrow">→</div></mat-card>
         </div>
     }
 </div>

@@ -15,7 +15,7 @@ export class UserList {
   private readonly _router = inject(Router);
 
   goToUserId(id: string): void {
-    console.log('User Id appelé : ', id);
+    console.log('User edition requested : ', id);
     this._router.navigate(['user', id])
   }
   

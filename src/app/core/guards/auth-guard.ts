@@ -5,6 +5,6 @@ import { Auth } from '../services/auth';
 export const authGuard: CanActivateFn = (route, state) => {
   const auth = inject(Auth);
 
-  console.log('AuthGuard appelé, isEditionAuthorized : ', auth.isEditionAuthorized());
+  console.log('AuthGuard appelé, autorisation de modification : ', auth.isEditionAuthorized());
   return auth.isEditionAuthorized();
 };

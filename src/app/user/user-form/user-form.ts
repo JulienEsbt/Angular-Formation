@@ -36,6 +36,7 @@ export class UserForm {
       this.isEditMode = true;
       console.log('Active user id from route : ', activeUserId);
       const userToEdit = this._userList.getUserById(activeUserId);
+      // const userToEdit = this._userList.getUserByIdObservable(activeUserId);
       if (userToEdit) {
         console.log('User to edit found : ', userToEdit);
         this.userCreationForm.setValue(userToEdit);
@@ -48,6 +49,7 @@ export class UserForm {
       if (this._activatedRoute.snapshot.params['id']) {
         const updatedUser: User = this.userCreationForm.value;
         this._userList.updateUser(updatedUser);
+        // this._userList.updateUserObservable(updatedUser);
         console.log("User updated successfully", updatedUser);
         return;
       } else {

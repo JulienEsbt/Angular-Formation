@@ -27,6 +27,12 @@ export class UserManagement implements OnInit {
     console.log("Liste des utilisateurs : ", this.listUsersManager);
   }
 
+  protected onUserCreatedObservable(userFormValid: User) {
+    this._userList.saveUserObservable(userFormValid);
+    console.log("Utilisateur {} ajouté.", userFormValid);
+    console.log("Liste des utilisateurs : ", this.listUsersManager);
+  }
+
   isAdmin(): boolean {
     return this._auth.isEditionAuthorized();
   }
@@ -35,5 +41,10 @@ export class UserManagement implements OnInit {
   ngOnInit(): void {
     this.listUsersManager = this._userList.getAllUsers();
     console.log("Utilisateurs récupérés au démarrage : ", this.listUsersManager);
+    // this._userList.getAllUsersObservable().subscribe(users => {
+    //   this.listUsersManager = users;
+    //   console.log("Utilisateurs récupérés au démarrage : ", this.listUsersManager);
+    // });
   }
+  
 }

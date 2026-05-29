@@ -9,7 +9,10 @@ export const routes: Routes = [
         path: 'home', 
         component: UserManagement
     }, {
-        path: 'user/:id', 
+        path: 'home/user-edition', 
+        component: UserManagement,
+    }, {
+        path: 'home/user-edition/:id', 
         component: UserForm,
         canActivate: [authGuard],
     }, {

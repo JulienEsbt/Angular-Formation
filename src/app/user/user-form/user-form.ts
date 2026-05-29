@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserListService } from '../../core/services/user-list-service';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -20,6 +20,7 @@ export class UserForm {
   userCreationForm: FormGroup; 
   private readonly _userList = inject(UserListService);
   private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
   protected isEditMode: boolean = false;
 
   constructor() {
@@ -65,4 +66,8 @@ export class UserForm {
       return forbidden ? { forbiddenName: {value: control.value}} : null; 
     };
   }
+
+  returnToUserList(): void {
+      this._router.navigate(['home/user-edition']);
+  }  
 }

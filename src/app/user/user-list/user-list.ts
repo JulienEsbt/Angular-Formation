@@ -24,7 +24,7 @@ export class UserList {
 
   goToUserId(id: string): void {
     console.log('User edition requested : ', id);
-    this._router.navigate(['user', id])
+    this._router.navigate(['home/user-edition', id])
   }
 
   removeUser(id: string): void {

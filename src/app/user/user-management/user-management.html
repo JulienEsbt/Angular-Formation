@@ -1,5 +1,5 @@
-<!-- @if (!isEditionAuthorized){ -->
+@if (!isAdmin()){
   <app-user-form (userFormValid)="onUserCreated($event)"></app-user-form>
-<!-- } @else { -->
+} @else {
     <app-user-list [listUsersList]="listUsersManager"></app-user-list>
-<!-- } -->
+}

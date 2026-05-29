@@ -27,6 +27,11 @@ export class UserManagement implements OnInit {
     console.log("Liste des utilisateurs : ", this.listUsersManager);
   }
 
+  isAdmin(): boolean {
+    return this._auth.isEditionAuthorized();
+  }
+
+
   ngOnInit(): void {
     this.listUsersManager = this._userList.getAllUsers();
     console.log("Utilisateurs récupérés au démarrage : ", this.listUsersManager);

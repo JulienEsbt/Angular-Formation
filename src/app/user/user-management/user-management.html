@@ -1,3 +1,6 @@
-<app-user-form (userFormValid)="onUserCreated($event)"></app-user-form>
-
-<app-user-list [listUsersList]="listUsersManager"></app-user-list>
+@if (!isAdmin()){
+    <app-user-form (userFormValid)="onUserCreated($event)"></app-user-form>
+   <!-- <app-user-form (userFormValid)="onUserCreatedObservable($event)"></app-user-form> -->
+} @else {
+    <app-user-list [listUsersList]="listUsersManager"></app-user-list>
+}

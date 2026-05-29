@@ -1,13 +1,14 @@
+<p>Appli User <mat-slide-toggle (change)="toggleUsersOrFilm($event.checked)">Appli Film</mat-slide-toggle></p>
+  
 <h1>{{ title() }}</h1>
 
 <div class="top-actions">
-  <mat-slide-toggle (change)="toggleUsers($event.checked)">
-    {{ modif() }}
-  </mat-slide-toggle>
-
-  <button matMiniFab (click)="goToHome()">
-    <mat-icon>home</mat-icon>
-  </button>
+  
+  @if (!isFilmApp()) {
+    <mat-slide-toggle (change)="toggleUsers($event.checked)">
+      {{ modif() }}
+    </mat-slide-toggle>
+  }
 </div>
 
 <router-outlet></router-outlet>

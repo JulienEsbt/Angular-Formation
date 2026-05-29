@@ -1,54 +1,110 @@
 <div class="user-form">
-    @if (isEditMode) {
-        <h2>Modification de l'utilisateur : </h2>
-    } @else {
-        <h2>Création d'un nouvel utilisateur : </h2>
-    }
+
+    <div class="form-header">
+        @if (isEditMode) {
+            <h2>Modification de l'utilisateur</h2>
+        } @else {
+            <h2>Création d'un nouvel utilisateur</h2>
+        }
+    </div>
+
     <form [formGroup]="userCreationForm">
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Nom</mat-label>
+
             <input type="text" formControlName="nom" matInput>
-            <mat-hint>Indiquez votre Nom. </mat-hint>
-            @if (userCreationForm.controls['nom'].invalid && (userCreationForm.controls['nom'].touched || userCreationForm.controls['nom'].dirty)) {
+
+            <mat-hint>Indiquez votre nom</mat-hint>
+
+            @if (userCreationForm.controls['nom'].invalid &&
+            (userCreationForm.controls['nom'].touched ||
+            userCreationForm.controls['nom'].dirty)) {
+
                 @if (userCreationForm.controls['nom']?.errors?.['required']) {
                     <mat-error>Le nom est obligatoire.</mat-error>
                 }
+
                 @if (userCreationForm.controls['nom']?.errors?.['minlength']) {
-                    <mat-error>Le nom doit avoir au moins 5 caractères.</mat-error>
+                    <mat-error>Le nom doit avoir au moins 3 caractères.</mat-error>
                 }
+
                 @if (userCreationForm.controls['nom']?.errors?.['forbiddenName']) {
-                    <mat-error>Le nom doit être différent et ne pas être Esterbet.</mat-error>
+                    <mat-error>Le nom Hitler est interdit.</mat-error>
                 }
             }
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Prénom</mat-label>
+
             <input type="text" formControlName="prenom" matInput>
-            <mat-hint>Indiquez votre Prénom. </mat-hint>
-            @if (userCreationForm.controls['prenom'].invalid && (userCreationForm.controls['prenom'].touched || userCreationForm.controls['prenom'].dirty)) {
+
+            <mat-hint>Indiquez votre prénom</mat-hint>
+
+            @if (userCreationForm.controls['prenom'].invalid &&
+            (userCreationForm.controls['prenom'].touched ||
+            userCreationForm.controls['prenom'].dirty)) {
+
                 @if (userCreationForm.controls['prenom']?.errors?.['required']) {
-                    <mat-error>Le prenom est obligatoire.</mat-error>
+                    <mat-error>Le prénom est obligatoire.</mat-error>
                 }
+
                 @if (userCreationForm.controls['prenom']?.errors?.['minlength']) {
-                    <mat-error>Le prenom doit avoir au moins 5 caractères.</mat-error>
+                    <mat-error>Le prénom doit avoir au moins 3 caractères.</mat-error>
                 }
             }
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Email</mat-label>
+
             <input type="email" formControlName="email" matInput>
-            <mat-hint>Indiquez votre Email. </mat-hint>
-            @if (userCreationForm.controls['email'].invalid && (userCreationForm.controls['email'].touched || userCreationForm.controls['email'].dirty)) {
+
+            <mat-hint>Indiquez votre email</mat-hint>
+
+            @if (userCreationForm.controls['email'].invalid &&
+            (userCreationForm.controls['email'].touched ||
+            userCreationForm.controls['email'].dirty)) {
+
                 @if (userCreationForm.controls['email']?.errors?.['required']) {
                     <mat-error>L'email est obligatoire.</mat-error>
                 }
+
                 @if (userCreationForm.controls['email']?.errors?.['email']) {
-                    <mat-error>La saisie ne correspond pas au format email.</mat-error>
+                    <mat-error>Format email invalide.</mat-error>
                 }
             }
-        </mat-form-field>        
+        </mat-form-field>
+
     </form>
 
-    <p></p>
-    <button matButton="filled" [disabled]="userCreationForm.controls['nom'].invalid || userCreationForm.controls['prenom'].invalid || userCreationForm.controls['email'].invalid" (click)="saveUser()">Valider l'utilisateur</button>
+    <div class="form-actions">
+
+        @if (isEditMode) {
+            <button
+                mat-stroked-button
+                class="back-btn"
+                (click)="returnToUserList()">
+
+                ← Retour
+            </button>
+        }
+
+        <button
+            mat-flat-button
+            color="primary"
+            class="submit-btn"
+            [disabled]="
+                userCreationForm.controls['nom'].invalid ||
+                userCreationForm.controls['prenom'].invalid ||
+                userCreationForm.controls['email'].invalid
+            "
+            (click)="saveUser(); returnToUserList()">
+
+            Valider l'utilisateur
+        </button>
+
+    </div>
+
 </div>

@@ -1,10 +1,44 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../user/models/user';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserListService {
+
+  private readonly _users = new BehaviorSubject<User[]>([]);
+  users$ = this._users.asObservable();
+
+  saveUserObservable(user: User): void {
+    this._users.next([...this._users.value, user]);
+  }
+
+  getAllUsersObservable(): Observable<User[]> {
+    return this._users.asObservable();
+  }
+
+  getUserByIdObservable(id: string): User | undefined {
+    return this._users.value.find((user) => user.id === id);
+  }
+
+  updateUserObservable(updatedUser: User): void {
+    const values = this._users.value;
+    const index = values.findIndex((userItem) => userItem.id === updatedUser.id);
+    if (index >= 0) {
+      values[index] = updatedUser;
+      this._users.next(values);
+    }
+  }
+
+  removeUserObservable(userId: string): void {
+    const values = this._users.value;
+    const index = values.findIndex((userItem) => userItem.id === userId);
+    if (index >= 0) {
+      const updatedArray = values.splice(index, 1);
+      this._users.next(updatedArray);
+    }
+  }
   
   saveUser(user: User): void {
     console.log("Saving user : ", user);
@@ -18,6 +52,7 @@ export class UserListService {
     }
     console.log("User saved, current userIds : ", JSON.parse(localStorage.getItem('userIds') || '[]'));
     localStorage.setItem(user.id, JSON.stringify(user));
+    // this.saveUserObservable(user);
     console.log("User details saved, current user details : ", JSON.parse(localStorage.getItem(user.id) || '{}'));
   }
 

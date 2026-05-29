@@ -26,10 +26,10 @@ export class UserForm {
   constructor() {
     this.userCreationForm = new FormGroup({
       id: new FormControl(Date.now().toString(), {nonNullable: true}),
-      nom: new FormControl("", [Validators.required, Validators.minLength(5), this.forbiddenNameValidator("esterbet")]),
-      prenom: new FormControl("", [Validators.required, Validators.minLength(5)]),
+      nom: new FormControl("", [Validators.required, Validators.minLength(3), this.forbiddenNameValidator("Hitler")]),
+      prenom: new FormControl("", [Validators.required, Validators.minLength(3)]),
       email: new FormControl("", [Validators.required, Validators.email])
-    }, /* {validators: this.equalIdentityValidator} */); 
+    }, /* e.g. {validators: this.equalIdentityValidator} */); 
 
     const activeUserId = this._activatedRoute.snapshot.params['id'];
     if (activeUserId) {

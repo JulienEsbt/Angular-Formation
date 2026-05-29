@@ -26,11 +26,11 @@
                 }
 
                 @if (userCreationForm.controls['nom']?.errors?.['minlength']) {
-                    <mat-error>Le nom doit avoir au moins 5 caractères.</mat-error>
+                    <mat-error>Le nom doit avoir au moins 3 caractères.</mat-error>
                 }
 
                 @if (userCreationForm.controls['nom']?.errors?.['forbiddenName']) {
-                    <mat-error>Le nom ne peut pas être Esterbet.</mat-error>
+                    <mat-error>Le nom Hitler est interdit.</mat-error>
                 }
             }
         </mat-form-field>
@@ -51,7 +51,7 @@
                 }
 
                 @if (userCreationForm.controls['prenom']?.errors?.['minlength']) {
-                    <mat-error>Le prénom doit avoir au moins 5 caractères.</mat-error>
+                    <mat-error>Le prénom doit avoir au moins 3 caractères.</mat-error>
                 }
             }
         </mat-form-field>
@@ -100,7 +100,7 @@
                 userCreationForm.controls['prenom'].invalid ||
                 userCreationForm.controls['email'].invalid
             "
-            (click)="saveUser()">
+            (click)="saveUser(); returnToUserList()">
 
             Valider l'utilisateur
         </button>

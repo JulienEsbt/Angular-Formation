@@ -1,9 +1,8 @@
+<p>Appli User <mat-slide-toggle (change)="toggleUsersOrFilm($event.checked)">Appli Film</mat-slide-toggle></p>
+  
 <h1>{{ title() }}</h1>
 
 <div class="top-actions">
-  <mat-slide-toggle (change)="toggleUsersOrFilm($event.checked)">
-    Appli User - Appli Film
-  </mat-slide-toggle>
   
   @if (!isFilmApp()) {
     <mat-slide-toggle (change)="toggleUsers($event.checked)">

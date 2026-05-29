@@ -15,6 +15,7 @@ export class App {
   protected readonly modif = signal('Modification des utilisateurs désactivée');
   private readonly _auth = inject(Auth);
   private readonly _router = inject(Router);
+  protected isFilmApp = signal(false);
 
   toggleUsers(checked: boolean): void {
     console.log('Autorisation de modification : ', checked);
@@ -25,6 +26,17 @@ export class App {
       this.modif.set('Modification des utilisateurs désactivée');
       this._auth.setEditionAuthorization(false);
     }
+  }
+
+  toggleUsersOrFilm(checked: boolean): void {
+    console.log('Basculer entre film et user : ', checked);
+    if (checked) {
+      this.isFilmApp.set(true);
+      this._router.navigate(['films']);
+    } else {
+      this.isFilmApp.set(false);
+      this._router.navigate(['users']);
+    } 
   }
 
   protected goToHome(): void {

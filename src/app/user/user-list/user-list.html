@@ -8,8 +8,8 @@
                 <div class="email">{{user.email}}</div>
             </div>
             @if (isEditionAuthorized()) {
-                <mat-card class="user-card" (click)="goToUserId(user.id)" tabindex="0"><div class="arrow">Modifier</div></mat-card>
-                <mat-card class="user-card" (click)="removeUser(user.id)" tabindex="0"><div class="arrow">Supprimer</div></mat-card>
+                <mat-card class="user-card" (click)="goToUserId(user.id)" (keydown.enter)="goToUserId(user.id)" tabindex="0"><div class="arrow">Modifier</div></mat-card>
+                <mat-card class="user-card" (click)="removeUser(user.id)" (keydown.enter)="removeUser(user.id)" tabindex="0"><div class="arrow">Supprimer</div></mat-card>
             }
         </div>
     }

@@ -1,0 +1,70 @@
+<div class="film-container">
+    <h2>Recherche de film</h2>
+
+    <div class="search-bar">
+        <mat-form-field class="example-full-width">
+            <mat-label>Rechercher un film</mat-label>
+            <input matInput #titleInput placeholder="Ex: Interstellar">
+            <mat-hint>Saisissez le titre d'un film</mat-hint>
+        </mat-form-field>
+
+        <button matButton="filled" (click)="onSearch(titleInput.value)">
+            Rechercher
+        </button>
+    </div>
+
+    @if (detailsVisible) {
+        <mat-card class="film-details">
+            <div class="film-header">
+                <img
+                    [src]="filmDetails[1]"
+                    [alt]="filmDetails[0]"
+                    class="film-poster"
+                >
+
+                <div class="film-main-info">
+                    <h3>{{ filmDetails[0] }}</h3>
+
+                    <div class="badges">
+                        <span>{{ filmDetails[2] }}</span>
+                        <span>⭐ {{ filmDetails[3] }}</span>
+                        <span>{{ filmDetails[5] }}</span>
+                    </div>
+
+                    <p class="genre">{{ filmDetails[6] }}</p>
+                </div>
+            </div>
+
+            <hr class="film-divider">
+
+            <mat-card-content>
+                <div class="info-grid">
+                    <div>
+                        <strong>Sortie :</strong>
+                        <p>{{ filmDetails[4] }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Réalisateur :</strong>
+                        <p>{{ filmDetails[7] }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Scénariste :</strong>
+                        <p>{{ filmDetails[8] }}</p>
+                    </div>
+
+                    <div>
+                        <strong>Acteurs :</strong>
+                        <p>{{ filmDetails[9] }}</p>
+                    </div>
+                </div>
+
+                <div class="plot">
+                    <strong>Synopsis</strong>
+                    <p>{{ filmDetails[10] }}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    }
+</div>

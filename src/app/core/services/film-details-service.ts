@@ -9,12 +9,12 @@ export class FilmDetailsService {
 
     private readonly _httpClient = inject(HttpClient);
   
-    getData(title: string): Observable<any> {
+    getData(title: string, apiKey: string): Observable<any> {
       console.log("Fetching data from API...");
       return this._httpClient.get('http://www.omdbapi.com', {
         params: {
           t: title,
-          apiKey: '33e04429'
+          apiKey
         }
       })
     }

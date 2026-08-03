@@ -23,21 +23,15 @@ export class UserListService {
   }
 
   updateUserObservable(updatedUser: User): void {
-    const values = this._users.value;
-    const index = values.findIndex((userItem) => userItem.id === updatedUser.id);
-    if (index >= 0) {
-      values[index] = updatedUser;
-      this._users.next(values);
-    }
+    const values = this._users.value.map((user) =>
+      user.id === updatedUser.id ? updatedUser : user,
+    );
+    this._users.next(values);
   }
 
   removeUserObservable(userId: string): void {
-    const values = this._users.value;
-    const index = values.findIndex((userItem) => userItem.id === userId);
-    if (index >= 0) {
-      const updatedArray = values.splice(index, 1);
-      this._users.next(updatedArray);
-    }
+    const values = this._users.value.filter((user) => user.id !== userId);
+    this._users.next(values);
   }
   
   saveUser(user: User): void {

@@ -8,7 +8,13 @@
             <mat-hint>Saisissez le titre d'un film</mat-hint>
         </mat-form-field>
 
-        <button matButton="filled" (click)="onSearch(titleInput.value)">
+        <mat-form-field class="example-full-width">
+            <mat-label>Clé API OMDb</mat-label>
+            <input matInput #apiKeyInput type="password" autocomplete="off">
+            <mat-hint>La clé reste dans ce formulaire et n'est pas enregistrée</mat-hint>
+        </mat-form-field>
+
+        <button matButton="filled" (click)="onSearch(titleInput.value, apiKeyInput.value)">
             Rechercher
         </button>
     </div>

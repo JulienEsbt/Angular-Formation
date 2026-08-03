@@ -16,16 +16,20 @@ export class FilmDetailsComponent {
   protected detailsVisible = false;
   private readonly _cdr = inject(ChangeDetectorRef);
 
-  onSearch(title: string): void {
+  onSearch(title: string, apiKey: string): void {
+    if (!title.trim() || !apiKey.trim()) {
+      return;
+    }
+
     console.log("Searching for film : ", title);
-    this._filmDetailsService.getData(title).subscribe({
+    this._filmDetailsService.getData(title, apiKey).subscribe({
       next: (response) => {
         console.log('API response : ', response);
         this.detailsVisible = true;
         this.filmDetails = [response.Title, 
           response.Poster,
           response.Year, 
-          response.Ratings[1].Value, 
+          response.Ratings?.[1]?.Value ?? 'N/A',
           response.Released, 
           response.Runtime, 
           response.Genre, 

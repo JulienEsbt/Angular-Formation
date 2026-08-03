@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserManagement } from './user-management';
 import { User } from '../models/user';
+import { provideRouter } from '@angular/router';
 
 describe('UserManagement', () => {
   let component: UserManagement;
@@ -9,6 +10,7 @@ describe('UserManagement', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UserManagement],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserManagement);
@@ -26,7 +28,6 @@ describe('UserManagement', () => {
     component["onUserCreated"](user1);
     expect(component["listUsersManager"][0].nom).toBe("julien");
     expect(component["listUsersManager"][0].email).toBe(user1.email);
-    expect(component["listUsersManager"][0]).toEqual({nom: "julien", prenom: "esterbet", email: "haha@gmail.com"});
     expect(component["listUsersManager"][0]).toEqual(user1);
   });
 

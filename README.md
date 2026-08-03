@@ -1,59 +1,66 @@
-# Ex3
+# Angular Training Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+> **Status: Learning project** — built in 2026 to practise modern Angular
+> patterns. It is not a production application and does not use a real
+> authentication or persistence backend.
 
-## Development server
+This repository contains a small Angular application developed through a set of
+training exercises. It combines user management, guarded navigation, reactive
+state, local persistence and a film lookup screen in one project.
 
-To start a local development server, run:
+## What it demonstrates
 
-```bash
-ng serve
-```
+- standalone Angular components and application-level routing;
+- user creation, editing, listing and deletion;
+- reactive forms and Angular Material controls;
+- a route guard backed by a small authentication service;
+- local persistence with `localStorage` and an RxJS `BehaviorSubject` exercise;
+- HTTP integration with the OMDb film API without committing an API key;
+- unit tests with Angular's Vitest-based test runner;
+- code formatting and coverage scripts.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Stack
 
-## Code scaffolding
+- Angular 21 and TypeScript 5.9
+- Angular Material and CDK
+- RxJS
+- SCSS
+- Vitest and jsdom
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run locally
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Requirements: a Node.js version supported by Angular 21 and npm.
 
 ```bash
-ng test
+git clone https://github.com/JulienEsbt/Angular-Formation.git
+cd Angular-Formation
+npm ci
+npm start
 ```
 
-## Running end-to-end tests
+Open `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+## Checks
 
 ```bash
-ng e2e
+npm test
+npm run coverage
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The test suite currently focuses mainly on component and service creation, with
+some behavioural coverage for user management. It should be expanded before
+the project is used as a reference for production testing practices.
 
-## Additional Resources
+## Current limitations
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- authentication is a local training abstraction, not a security boundary;
+- user data is stored only in the browser;
+- the film search depends on an external API and asks for an OMDb API key at
+  runtime; the key is not stored by the application;
+- the application has no backend or deployment configuration;
+- some exercise implementations and tests still need refinement.
+
+## License
+
+No open-source license has been selected for this learning repository.

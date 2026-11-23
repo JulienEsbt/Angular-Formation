@@ -52,6 +52,14 @@ The test suite currently focuses mainly on component and service creation, with
 some behavioural coverage for user management. It should be expanded before
 the project is used as a reference for production testing practices.
 
+The `glob` and `minimatch` overrides apply security fixes to indirect CLI
+dependencies while keeping the application on Angular 21. They address
+[GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4) and
+[GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249).
+Remove these overrides when the upstream tools include compatible fixed
+versions. After changing them, run the tests, production build and
+`npm audit`, and verify CLI generation and package file selection.
+
 ## Current limitations
 
 - authentication is a local training abstraction, not a security boundary;
